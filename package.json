@@ -1,30 +1,37 @@
 {
-  "name": "server",
+  "name": "hasura-with-firebase",
   "repository": "https://github.com/joserocha3/hasura-with-firebase",
   "author": "Pablo Rocha",
   "license": "MIT",
   "version": "0.0.1",
-  "engines": {
-    "node": ">=10.0.0"
-  },
   "scripts": {
-    "dev": "backpack -r dotenv/config",
-    "dev:debug": "backpack -r dotenv/config --inspect",
-    "dev:debug-wait": "backpack -r dotenv/config --inspect-brk",
-    "start": "node ./build/main.js",
-    "build": "backpack build"
-  },
-  "heroku-run-build-script": true,
-  "dependencies": {
-    "apollo-server": "^2.8.2",
-    "backpack-core": "^0.8.4",
-    "firebase-admin": "^8.4.0",
-    "graphql": "^14.5.0",
-    "graphql-request": "^1.8.2",
-    "lodash.get": "^4.4.2",
-    "yup": "^0.27.0"
+    "lint-fix": "eslint --fix",
+    "lint-all": "eslint ."
   },
   "devDependencies": {
-    "dotenv": "^8.1.0"
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.2.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-json": "^1.4.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-markdown": "^1.0.0",
+    "eslint-plugin-react": "^7.14.3",
+    "husky": "^3.0.4",
+    "lint-staged": "^9.2.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,json,md}": [
+      "yarn lint-fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "eslint-plugin-react-hooks": "^2.0.1"
   }
 }
